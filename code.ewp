@@ -1604,10 +1604,16 @@
       <name>$PROJ_DIR$\User\beep.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\User\detect.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\User\display.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\User\ds18b20.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\User\hc-sr04.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\User\iic.c</name>
@@ -1626,9 +1632,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$\User\typedef.h</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\User\ultrasonic.c</name>
     </file>
   </group>
 </project>

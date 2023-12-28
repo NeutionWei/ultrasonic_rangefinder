@@ -3,7 +3,7 @@
 #include "key.h"
 #include "init.h"
 #include "beep.h"
-#include "ultrasonic.h"
+#include "hc-sr04.h"
 #include "display.h"
 #include "oled.h"
 #include "ds18b20.h"
@@ -346,12 +346,15 @@ void Get_Temperature()
   
     tmp = temp & 0x0f;
     temp >>= 4;
-    temp &= 0x007f;
+    temp &= 0x007f; 
     tmp *= 625;
-    if(temp > 50 || temp < 10)
-      return;
+    /*if(temp > 50 || temp < 10)  // 临时调试
+    {
+      temp = 0;
+    }*/
+      //return;
     //Delay(100);
-    OLED_ShowNum(30, 4, temp/256, 2, 16);
-    OLED_ShowNum(30, 6, temp%256, 2, 16);  
+    //OLED_ShowNum(30, 4, temp/256, 2, 16);
+    //OLED_ShowNum(30, 6, temp%256, 2, 16);  
 }
 

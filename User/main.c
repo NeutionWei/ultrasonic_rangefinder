@@ -4,10 +4,11 @@
 #include "key.h"
 #include "init.h"
 #include "beep.h"
-#include "ultrasonic.h"
+#include "hc-sr04.h"
 #include "display.h"
 #include "oled.h"
 #include "ds18b20.h"
+#include "detect.h"
 
 //__IO u8 cnt;
 __IO u8 Cnt_TIM1 = 0;
@@ -58,11 +59,11 @@ int main(void)
       if(Flag_MainLoop == SET)
       {
               Flag_MainLoop = RESET;  
-              //Scan_Keys();	// 按键扫描
-              //Disp_Data();	// 显示数据
-              //Get_Distance();	// 获得超声波返回距离
-              Get_Temperature();
-              //Detect_Data();	// 检查与处理数据
+              Scan_Keys();	// 按键扫描
+              Disp_Data();	// 显示数据
+              Get_Distance();	// 获得超声波模块的距离值
+              Get_Temperature(); //获得温度传感器的温度值
+              Detect_Data();	// 检查与处理数据
               //Check_Alarm();	// 是否警报
 
               

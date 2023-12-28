@@ -1,5 +1,7 @@
 #include "init.h"
 
+__IO u16 TIM2_Value;
+
 void Init_Clock()
 {
 	// CLOCK初始化 -> stm8s.pdf p90
@@ -44,18 +46,9 @@ void Init_GPIO()
         PC_CR1 = 0xB8;  
         PD_CR2 = 0x00;
         PC_CR2 = 0x00;
-        LOW_TRIG();
 }
 
-void Init_Beep()
-{
-	// Beeper初始化 -> stm8s.pdf p122
-	// 00: fLS/(8 x BEEPDIV) kHz output
-	// 01: fLS/(4 x BEEPDIV) kHz output
-	// 1x: fLS/(2 x BEEPDIV) kHz output
-	BEEP_CSR_BEEPDIV = 0x0E;	// 校验时钟 128k/16 = 8k
-	BEEP_CSR_BEEPSEL = 2;		// 2k
-}
+
 
 void Init_TIM1()
 {
@@ -187,7 +180,7 @@ void Delay(__IO u8 x)
 }
 
 
-void TIM2_Delayxus(u8 x)	// 256us以内
+/*void TIM2_Delayxus(u8 x)	// 256us以内
 {
 //	__IO u8 xus = x;
 	
@@ -197,7 +190,7 @@ void TIM2_Delayxus(u8 x)	// 256us以内
 	Clean_TIM2Counter();
 }
 
-/*void delay_us(unsigned int us)
+void delay_us(unsigned int us)
 {
 	while(us--);
 }*/

@@ -3,11 +3,21 @@
 #include "beep.h"
 //#include "display.h"
 #include "typedef.h"
-#include "ultrasonic.h"
+#include "hc-sr04.h"
 #include "iostm8s103f3.h"
 
 __IO FlagStatus Flag_CheckAlarm = RESET;
 
+void Init_Beep()
+{
+        LOW_TRIG();
+	// Beeper初始化 -> stm8s.pdf p122
+	// 00: fLS/(8 x BEEPDIV) kHz output
+	// 01: fLS/(4 x BEEPDIV) kHz output
+	// 1x: fLS/(2 x BEEPDIV) kHz output
+	BEEP_CSR_BEEPDIV = 0x0E;	// 校验时钟 128k/16 = 8k
+	BEEP_CSR_BEEPSEL = 2;		// 2k
+}
 
 void Check_Alarm()
 {

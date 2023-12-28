@@ -20,16 +20,6 @@
 
 //#define PA3
 
-//****************************LED打开与关闭宏函数***************************
-#define	ON_LED_Y()		(PORT_LED_Y=1)
-#define	ON_LED_G()		(PORT_LED_G=1)
-#define	ON_LED_R()		(PORT_LED_R=1)
-#define	OFF_LED_Y()		(PORT_LED_Y=0)
-#define	OFF_LED_G()		(PORT_LED_G=0)
-#define	OFF_LED_R()		(PORT_LED_R=0)
-                        
-#define	LOW_TRIG()		(PORT_TRIG=0)
-#define	HIGH_TRIG()		(PORT_TRIG=1)
 
 //#define	ON_TIMER()		TIM4_CR1=0x01
 
@@ -37,6 +27,9 @@
 #define ON_TIM2()    {TIM2_CR1  |=  (1<<0);}// 开TIM2
 #define OFF_TIM2()   {TIM2_CR1  &= ~(1<<0);}// 关TIM2
 #define Clean_TIM2Counter() {TIM2_CNTRH = 0; TIM2_CNTRL = 0;}// 清零TIM2计数器
+
+
+extern __IO u16 TIM2_Value;
 
 void Init_Clock();
 void Init_GPIO();
@@ -49,7 +42,6 @@ void Init_TIM2();
 void Init_System();
 void Delay(u8 x);
 //void TIM2_Delayxus(u8 x);
-void Init_Beep();
 void usdelay_TIM4(int us);
 //void sdelay_TIM4(int s);
 

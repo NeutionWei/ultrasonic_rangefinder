@@ -3,7 +3,7 @@
 #include "beep.h"
 //#include "iostm8s103f3.h"
 #include "init.h"
-#include "ultrasonic.h"
+#include "hc-sr04.h"
 
 //#define		key_input	  ((PORT_K_U<<1) | PORT_K_D)
 #define 	key_state_0   0

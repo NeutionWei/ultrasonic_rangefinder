@@ -34,6 +34,12 @@
 #define RECALL_EEPROM        0xB8
 #define READ_POWER_SUPPLY    0xB4
 
+extern volatile unsigned int temp;
+extern volatile unsigned int tmp;
+//unsigned int i =0;
+extern volatile char sig;
+
+
 void Get_Temperature();
 
 #endif
