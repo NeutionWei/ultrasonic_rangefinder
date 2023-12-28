@@ -242,7 +242,7 @@ float ds18b2018B20_ReadTemperature(void)
 
 
 
-
+volatile unsigned int temp_buf = 0;
 volatile unsigned int temp = 0;
 volatile unsigned int tmp;
 //unsigned int i =0;
@@ -289,10 +289,10 @@ void ds18b20_write(char dat) //写数据
   }
 }
 
-char ds18b20_read()             //读数据
+unsigned char ds18b20_read()             //读数据
 {
   char i;
-  char dat = 0;
+  unsigned char dat = 0;
   //ON_LED_Y();
   for(i=0; i<8; i++)      
   {
@@ -315,8 +315,131 @@ char ds18b20_read()             //读数据
   return dat;           //返回数值
 }
 
+// CRC8校验程序
+unsigned char calcrc_1byte(unsigned abyte)
+{
+  unsigned char i;
+  unsigned char crc_1byte = 0;
+  
+  for(i=0; i<8; i++)
+  {
+    if((crc_1byte^abyte) & 0x01)
+    {
+      crc_1byte ^= 0x18;
+      crc_1byte >>= 1;
+      crc_1byte |= 0x80;
+    }
+    else
+    {
+      crc_1byte >>= 1;
+      abyte >>= 1;
+    }
+  }
+  return crc_1byte;
+}
+
+unsigned char calcrc_bytes(unsigned char *p, unsigned char len)
+{
+  unsigned char crc = 0;
+  
+  while(len--)  // len为总共要检验的字节数
+  {
+    crc = calcrc_1byte(crc ^ *p++);
+  }
+  return crc;   // 若最终返回的crc为0，则数据传输成功
+}
+
+// 平均值计算
+int ave_process()
+{
+	static volatile int   adc_exist;
+	volatile unsigned int adc_data;
+	static volatile unsigned int  adc_max = 0;
+	static volatile unsigned int  adc_min = 0;
+	static volatile unsigned int  adc_sum = 0;
+	static volatile unsigned char adc_cnt = 0;
+        static volatile unsigned int  adc_ave = 0;
+
+	if(0 != temp)
+	{
+		
+		adc_data  = temp;
+		
+		
+		/* 找出最大最小值 */
+		if(!adc_exist)
+		{
+			adc_exist = 1;
+			adc_max = adc_data;
+			adc_min = adc_data;
+		}
+		else if(adc_data > adc_max)
+			adc_max = adc_data;
+		else if(adc_data < adc_min)
+			adc_min = adc_data;
+			
+		adc_sum +=  adc_data;
+		if(++adc_cnt >= 6)
+		{
+			adc_sum -= adc_max;
+			adc_sum -= adc_min;
+			
+                        adc_ave = (adc_sum >> 2);
+			
+                        /*ultra_formula(DistanceData, adc_ave);
+                        Dis[0] = DistanceData/100;
+                        Dis[1] = DistanceData%100/10;
+                        Dis[2] = DistanceData%10;
+                        OLED_ShowNum(15, 6, Dis[0], 1, 16);
+                        OLED_ShowNum(25, 6, Dis[1], 1, 16);
+                        OLED_ShowNum(35, 6, Dis[2], 1, 16);*/
+                        
+			if(adc_max <= (adc_min+10))
+                        {
+                                
+                                temp_buf = adc_ave;
+                                
+                                adc_sum = 0;
+                                adc_max = 0;
+                                adc_min = 0;
+                                adc_cnt = 0;
+                                adc_exist = 0;
+                                return 0;
+                                /*Dis[0] = DistanceData/100;
+                                Dis[1] = DistanceData%100/10;
+                                Dis[2] = DistanceData%10;
+                                OLED_ShowNum(15, 6, Dis[0], 1, 16);
+                                OLED_ShowNum(25, 6, Dis[1], 1, 16);
+                                OLED_ShowNum(35, 6, Dis[2], 1, 16);*/
+				//Flag_ADC_Success = SET;
+			}
+			adc_sum = 0;
+                        adc_max = 0;
+                        adc_min = 0;
+                        adc_cnt = 0;
+                        adc_exist = 0;	
+			
+                        return -1;
+		}
+	}
+	else
+	{
+		adc_sum = 0;
+		adc_min = 0;
+		adc_max = 0;
+		adc_cnt = 0;
+//		adc_exist = 0;
+                return -1;
+	}
+        return -1;
+}
+
+
 void Get_Temperature()
 {
+    //int i;
+    //unsigned char data_byte[9];
+  
     ds18b20_reset();         //复位
     //ON_LED_Y();
     ds18b20_write(SKIP_ROM);         //跳过rom
@@ -329,6 +452,20 @@ void Get_Temperature()
     ds18b20_write(SKIP_ROM);         //跳过rom
     ds18b20_write(READ_SCRATCHPAD);         //读取暂存器
     //ON_LED_Y();
+    
+    /*for(i=0; i<9; i++)
+      data_byte[i] = ds18b20_read();
+    
+    if(0 == calcrc_bytes(data_byte, 9))
+    {
+      tmp  = data_byte[0];
+      temp = data_byte[1];
+    }
+    else
+    {
+      //tmp  = 0;
+      //temp = 0;
+    }*/
     tmp  = ds18b20_read();
     temp = ds18b20_read();
     //ON_LED_Y();
@@ -348,6 +485,7 @@ void Get_Temperature()
     temp >>= 4;
     temp &= 0x007f; 
     tmp *= 625;
+    ave_process();
     /*if(temp > 50 || temp < 10)  // 临时调试
     {
       temp = 0;

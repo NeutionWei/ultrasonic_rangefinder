@@ -155,8 +155,9 @@ u32 get_system_time_us()
 {
 	//unsigned long long us = (50000 - TCNTO0)/5;
 	//return g_system_time_10ms_cnt * 10 * 1000 + us;
-  u32 us = (125 - TIM1_ARRL);
-  return (g_system_time_125us_cnt * 125 + us);
+  //u32 us = (125 - TIM1_ARRL);
+  u32 us = TIM1_ARRL;
+  return (g_system_time_125us_cnt * 125 + us);  // 在中断内g_system_time_125us_cnt++，125us发生一次中断
 }
 
 void Delay(__IO u8 x)

@@ -24,6 +24,7 @@ void Init_Disp()
 	OLED_Clear();	// OLED清屏
 
         OLED_ShowString(0, 0, "Temperatures:");
+        OLED_ShowString(103, 0, "--");
         OLED_ShowString(0, 2, "Threshold:");
         OLED_ShowString(0, 4, "Distances:");
         OLED_ShowString(90, 4, "---");
@@ -119,7 +120,10 @@ void Disp_Data()
         //OLED_ShowNum(25, 2, Dis[1], 1, 16);
         //OLED_ShowNum(35, 2, Dis[2], 1, 16);
         OLED_ShowString(0, 0, "Temperatures:");
-        OLED_ShowNum(103, 0, temp%256, 2, 16);
+        if(temp_buf > 70)
+          temp_buf = 0;
+        OLED_ShowNum(103, 0, temp_buf%256, 2, 16);
+        //OLED_ShowNum(103, 0, temp%256, 2, 16);
         
         // 上电系统时间输出
         Second = (get_system_time_us()/1000/1000);
