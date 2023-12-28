@@ -1,0 +1,79 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BMP1	user\bmp.h	6;"	variable
+Brightness	user\oled.h	15;"	macro
+DEF_16BIT_REG_AT	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stm8s105c_s.h	20;"	macro
+DEF_16BIT_REG_AT	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stm8s105c_s.h	25;"	macro
+DEF_8BIT_REG_AT	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stm8s105c_s.h	19;"	macro
+DEF_8BIT_REG_AT	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stm8s105c_s.h	24;"	macro
+F6x8	user\oledfont.h	9;"	variable
+F8X16	user\oledfont.h	105;"	variable
+Hzk	user\oledfont.h	203;"	variable
+IIC_Init	user\iic.c	36;"	function	signature:(void)
+IIC_Init	user\iic.h	10;"	prototype	signature:(void)
+LED_Init	user\led.c	34;"	function	signature:(void)
+LED_Init	user\led.h	11;"	prototype	signature:(void)
+Max_Column	user\oled.h	13;"	macro
+Max_Row	user\oled.h	14;"	macro
+NonHandledInterrupt	stm8_interrupt_vector.c	12;"	function	signature:(void)
+OLED_CMD	user\oled.h	6;"	macro
+OLED_Clear	user\oled.c	156;"	function	signature:(void)
+OLED_Clear	user\oled.h	25;"	prototype	signature:(void)
+OLED_DATA	user\oled.h	7;"	macro
+OLED_Display_Off	user\oled.c	143;"	function	signature:(void)
+OLED_Display_Off	user\oled.h	23;"	prototype	signature:(void)
+OLED_Display_On	user\oled.c	130;"	function	signature:(void)
+OLED_Display_On	user\oled.h	22;"	prototype	signature:(void)
+OLED_DrawBMP	user\oled.c	296;"	function	signature:(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[])
+OLED_DrawBMP	user\oled.h	31;"	prototype	signature:(unsigned char x0, unsigned char y0,unsigned char x1, unsigned char y1,unsigned char BMP[])
+OLED_Init	user\oled.c	319;"	function	signature:(void)
+OLED_Init	user\oled.h	24;"	prototype	signature:(void)
+OLED_MODE	user\oled.h	8;"	macro
+OLED_Set_Pos	user\oled.c	117;"	function	signature:(unsigned char x, unsigned char y)
+OLED_Set_Pos	user\oled.h	29;"	prototype	signature:(unsigned char x, unsigned char y)
+OLED_ShowCHinese	user\oled.c	269;"	function	signature:(unsigned char x,unsigned char y,unsigned char no)
+OLED_ShowCHinese	user\oled.h	30;"	prototype	signature:(unsigned char x,unsigned char y,unsigned char no)
+OLED_ShowChar	user\oled.c	176;"	function	signature:(unsigned char x,unsigned char y,unsigned char chr)
+OLED_ShowChar	user\oled.h	26;"	prototype	signature:(unsigned char x,unsigned char y,unsigned char chr)
+OLED_ShowNum	user\oled.c	221;"	function	signature:(unsigned char x,unsigned char y,unsigned int num,unsigned char len,unsigned char size2)
+OLED_ShowNum	user\oled.h	27;"	prototype	signature:(unsigned char x,unsigned char y,unsigned int num,unsigned char len,unsigned char size2)
+OLED_ShowString	user\oled.c	249;"	function	signature:(unsigned char x,unsigned char y,unsigned char *chr)
+OLED_ShowString	user\oled.h	28;"	prototype	signature:(unsigned char x,unsigned char y, unsigned char *p)
+OLED_WR_Byte	user\oled.c	99;"	function	signature:(unsigned char dat,unsigned char cmd)
+OLED_WR_Byte	user\oled.h	21;"	prototype	signature:(unsigned char dat,unsigned char cmd)
+Read_Byte	user\iic.c	90;"	function	signature:(unsigned char addr)
+Read_Byte	user\iic.h	12;"	prototype	signature:(unsigned char addr)
+SIZE	user\oled.h	10;"	macro
+STM8S105C6	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stm8s105c6.h	3;"	macro
+STM8S105C_S	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stm8s105c_s.h	12;"	macro
+Wirte_Byte	user\iic.c	61;"	function	signature:(unsigned char addr ,unsigned char data)
+Wirte_Byte	user\iic.h	11;"	prototype	signature:(unsigned char addr ,unsigned char data)
+Write_IIC_Command	user\oled.c	39;"	function	signature:(unsigned char IIC_Command)
+Write_IIC_Data	user\oled.c	69;"	function	signature:(unsigned char IIC_Data)
+XLevelH	user\oled.h	12;"	macro
+XLevelL	user\oled.h	11;"	macro
+X_WIDTH	user\oled.h	16;"	macro
+Y_WIDTH	user\oled.h	17;"	macro
+__BMP_H	user\bmp.h	4;"	macro
+__IIC__H	user\iic.h	2;"	macro
+__LED__H	user\led.h	2;"	macro
+__MODS0__	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\mods0.h	11;"	macro
+__OLEDFONT_H	user\oledfont.h	2;"	macro
+__OLED__H	user\oled.h	2;"	macro
+__STM8S105C_S__	c:\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stm8s105c_s.h	6;"	macro
+_stext	stm8_interrupt_vector.c	20;"	prototype	file:
+_vectab	stm8_interrupt_vector.c	22;"	variable
+delay_ms	user\led.c	48;"	function	signature:(unsigned int ms)
+delay_ms	user\led.h	9;"	prototype	signature:(unsigned int ms)
+delay_us	user\led.c	62;"	function	signature:(unsigned int us)
+delay_us	user\led.h	10;"	prototype	signature:(unsigned int us)
+interrupt_handler	stm8_interrupt_vector.c	9;"	member	struct:interrupt_vector	file:
+interrupt_handler_t	stm8_interrupt_vector.c	5;"	typedef	file:
+interrupt_instruction	stm8_interrupt_vector.c	8;"	member	struct:interrupt_vector	file:
+interrupt_vector	stm8_interrupt_vector.c	7;"	struct	file:
+main	main.c	49;"	function
+oled_pow	user\oled.c	204;"	function	signature:(unsigned char m,unsigned char n)

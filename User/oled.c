@@ -266,7 +266,7 @@ void OLED_ShowString(unsigned char x,unsigned char y,unsigned char *chr)
 					y：起始页；一个字体占两页
 					no：字体的序列号
 	@retval			无
- 
+
 void OLED_ShowCHinese(unsigned char x,unsigned char y,unsigned char no)
 {      			    
 	unsigned char t,adder=0; //定义变量
@@ -280,7 +280,7 @@ void OLED_ShowCHinese(unsigned char x,unsigned char y,unsigned char no)
 			{	
 				OLED_WR_Byte(Hzk[2*no+1][t],OLED_DATA);//画no在数组位置的第二页16列的点
       }					
-}*/
+}*/ 
 
 
 /*

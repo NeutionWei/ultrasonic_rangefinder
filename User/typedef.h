@@ -30,7 +30,7 @@ typedef unsigned char     uint8_t;
 typedef unsigned short    uint16_t;
 typedef unsigned long     uint32_t;
 
-/*!< STM8 Standard Peripheral Library old types (maintained for legacy purpose) */
+/*!< Standard Peripheral Library old types (maintained for legacy purpose) */
 
 typedef int32_t  s32;
 typedef int16_t s16;
@@ -60,12 +60,8 @@ typedef enum {ERROR = 0, SUCCESS = !ERROR} ErrorStatus;
 #define S32_MAX    (2147483647)
 #define S32_MIN    (-2147483648uL)
 
-/**
-  * @}
-  */
+
   
-/** @addtogroup MAP_FILE_Exported_Types_and_Constants
-  * @{
-  */
+
 
 #endif /* _TYPEDEF_H */

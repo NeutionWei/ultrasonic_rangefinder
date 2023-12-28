@@ -37,10 +37,31 @@ Enabled=0
 ShowSource=1
 [Simulator]
 Freq=16000000
+[DebugChecksum]
+Checksum=787438729
+[CallStack]
+ShowArgs=0
+[Disassembly]
+MixedMode=1
+[RegisterFilter]
+FilePath=_ ""
+UseFilter=_ 0
+[DataSample]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
 [Breakpoints]
 Count=0
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
 [Aliases]
-Count=0
+A0=_ "C:\Users\Neutionwei\Desktop\Folder\±œ“µ…Ëº∆\code\User\key.c" ""
+Count=1
 SuppressDialog=0
 [DebuggerSettings]
 DisableInterruptsWhenStepping=0

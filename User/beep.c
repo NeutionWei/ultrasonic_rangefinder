@@ -14,11 +14,12 @@ void Check_Alarm()
 	u8 i;
 
 	// beeper -> stm8s.pdf p122
+        // Note: This register must not be kept at its reset value (0x1F)
 	// BEEPEN
 	if(SET == Flag_CheckAlarm)
 	{
-		Flag_CheckAlarm = RESET;
-		ENBLE_BEEP();
+		//Flag_CheckAlarm = RESET;
+		ON_BEEP();
 		/*for(i=0;i<50;i++)
 		 {
 			PORT_BEEP =~ PORT_BEEP;
@@ -26,4 +27,8 @@ void Check_Alarm()
 		 }
 		PORT_BEEP=1;*/
 	}
+        else if(RESET == Flag_CheckAlarm)
+        {
+                OFF_BEEP();
+        }
 }

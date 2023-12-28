@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"F:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "C:\Users\Neutionwei\Desktop\code\settings\code.Debug.general.xcl" --backend -f "C:\Users\Neutionwei\Desktop\code\settings\code.Debug.driver.xcl" 
+"F:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "C:\Users\Neutionwei\Desktop\Folder\毕业设计\code\settings\code.Debug.general.xcl" --backend -f "C:\Users\Neutionwei\Desktop\Folder\毕业设计\code\settings\code.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"F:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "C:\Users\Neutionwei\Desktop\code\settings\code.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Neutionwei\Desktop\code\settings\code.Debug.driver.xcl" 
+"F:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "C:\Users\Neutionwei\Desktop\Folder\毕业设计\code\settings\code.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Neutionwei\Desktop\Folder\毕业设计\code\settings\code.Debug.driver.xcl" 
 
 @echo off 
 :end
