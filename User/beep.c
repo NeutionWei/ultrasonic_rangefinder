@@ -10,7 +10,7 @@ __IO FlagStatus Flag_CheckAlarm = RESET;
 
 void Init_Beep()
 {
-        LOW_TRIG();
+        //LOW_TRIG();
 	// Beeper初始化 -> stm8s.pdf p122
 	// 00: fLS/(8 x BEEPDIV) kHz output
 	// 01: fLS/(4 x BEEPDIV) kHz output
@@ -21,7 +21,7 @@ void Init_Beep()
 
 void Check_Alarm()
 {
-	u8 i;
+	//u8 i;
 
 	// beeper -> stm8s.pdf p122
         // Note: This register must not be kept at its reset value (0x1F)

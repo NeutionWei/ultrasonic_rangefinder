@@ -30,6 +30,7 @@
 
 
 extern __IO u16 TIM2_Value;
+extern u32 g_system_time_125us_cnt;
 
 void Init_Clock();
 void Init_GPIO();
@@ -43,6 +44,7 @@ void Init_System();
 void Delay(u8 x);
 //void TIM2_Delayxus(u8 x);
 void usdelay_TIM4(int us);
+u32 get_system_time_us();
 //void sdelay_TIM4(int s);
 
 

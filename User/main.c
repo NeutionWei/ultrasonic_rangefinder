@@ -13,7 +13,7 @@
 //__IO u8 cnt;
 __IO u8 Cnt_TIM1 = 0;
 __IO u8 Cnt_MainLoop = 0;
-__IO u8 Cnt_Alarm = 0;
+//__IO u8 Cnt_Alarm = 0;
 __IO FlagStatus Flag_MainLoop = RESET;
 //__IO u8 Flag_MainLoop = 0;
 //__IO u8 isr = 0;
@@ -97,17 +97,18 @@ __interrupt void TIM1_OVF_IRQHandler()	// 125us
 	if(TIM1_SR1 & (1<<0))
 	{
                 //ON_LED_Y();
+                g_system_time_125us_cnt++; // 计算系统时间
 		TIM1_SR1 &= ~(1<<0);   	   // 清除中断标志位
                 TIM1_SR2 &= ~(1<<0);
 		if(++Cnt_TIM1 >= 8)	   // 1ms
 		{
                         Cnt_TIM1 = 0;
                         //ON_LED_Y();
-                        if(++Cnt_Alarm >= 5)
+                        /*if(++Cnt_Alarm >= 5)
                         {
                           Cnt_Alarm = 0;
-                          Check_Alarm();
-                        }
+                          //Check_Alarm();
+                        }*/
                         if(++Cnt_MainLoop >= 20)        //20ms
                         {
                           Cnt_MainLoop  = 0;

@@ -13,7 +13,6 @@
 #define	OFF_LED_G()		(PORT_LED_G=0)
 #define	OFF_LED_R()		(PORT_LED_R=0)
 
-#define MISTAKE_MAX 20
 
 
 void Init_Disp();

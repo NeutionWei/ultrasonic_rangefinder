@@ -23,6 +23,10 @@ __IO FlagStatus Flag_dis_mistake  = RESET; // 距离数据出错标志
 __IO FlagStatus Flag_dis_normal   = RESET; // 距离数据正常标志
 __IO FlagStatus Flag_dis_abnormal = RESET; // 距离数据过近标志
 
+__IO u8 curFlag_dis = MISTAKE;
+__IO u8 oldFlag_dis = MISTAKE;
+__IO u8 cnt_mistake,cnt_normal,cnt_abnormal;
+
 __IO u16 DistanceData;
 __IO u16 OutofDistance = 20;
 
@@ -116,25 +120,29 @@ int Ave_Process()
 void Detect_Data()
 {
         int ret;
+        static unsigned int cnt_detect;
 
-        ret = Ave_Process();
-        if(-1 == ret)
+        if(++cnt_detect >= DETECT_MAX)
         {
-          // 未测量到数据
-          //if(>=)
-          Flag_dis_mistake = SET;
-        }
-        else
-        {
-          if(DistanceData >= OutofDistance)
+          ret = Ave_Process();
+          if(-1 == ret)
           {
-            // 距离安全
-            Flag_dis_normal = SET;
+            // 未测量到数据
+            //if(>=)
+            Flag_dis_mistake = SET;
           }
-          else if((DistanceData >= 5) && (DistanceData < OutofDistance))
+          else
           {
-            // 距离过近
-            Flag_dis_abnormal = SET;
+            if(DistanceData >= OutofDistance)
+            {
+              // 距离安全
+              Flag_dis_normal = SET;
+            }
+            else if((DistanceData >= 5) && (DistanceData < OutofDistance))
+            {
+              // 距离过近
+              Flag_dis_abnormal = SET;
+            }
           }
         }
           

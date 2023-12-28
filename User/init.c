@@ -1,6 +1,8 @@
 #include "init.h"
 
 __IO u16 TIM2_Value;
+u32 g_system_time_125us_cnt = 0; // 系统上电时间定义
+
 
 void Init_Clock()
 {
@@ -149,18 +151,12 @@ void sdelay_TIM4(int s)
         msdelay_TIM4(s*1000);
 }*/
 
-void Init_System()
+u32 get_system_time_us()
 {
-	Init_Clock();
-	Init_GPIO();
-	Init_TIM1();
-	Init_TIM2();
-	/* LED初始化 */
-	/* 按键初始化 */
-	/* OLED初始化 */
-	/* HC-SR04初始化 */
-	/* 蜂鸣器初始化 */
-	/* DS18B20初始化 */
+	//unsigned long long us = (50000 - TCNTO0)/5;
+	//return g_system_time_10ms_cnt * 10 * 1000 + us;
+  u32 us = (125 - TIM1_ARRL);
+  return (g_system_time_125us_cnt * 125 + us);
 }
 
 void Delay(__IO u8 x)
